@@ -3,8 +3,8 @@ import "components/DayListItem.scss";
 import classNames from "classnames";
 
 export default function DayListItem(props) {
-  const dayClass = classNames('day-list__item', {
-    'day-list__item--select': props.selected,
+  let dayClass = classNames('day-list__item', {
+    'day-list__item--selected': props.selected,
     'day-list__item--full': props.spots === 0});
 
     const remainingSpots = (spots) => {
@@ -12,10 +12,10 @@ export default function DayListItem(props) {
         return <h3 className="text--light">no spots remaining</h3>;
       }
       if (spots === 1) {
-        return <h3 className="text--light">{props.spots} spot remaining</h3>;
+        return <h3 className="text--light">{spots} spot remaining</h3>;
       }
       if (spots > 1) {
-        return <h3 className="text--light">{props.spots} spots remaining</h3>;
+        return <h3 className="text--light">{spots} spots remaining</h3>;
       }
     };
 
