@@ -10,6 +10,7 @@ import Show from "components/Appointment/Show.js";
 import Confirm from "components/Appointment/Confirm.js";
 import Status from "components/Appointment/Status.js";
 import Error from "components/Appointment/Error.js";
+import Form from "components/Appointment/Form.js";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
@@ -160,3 +161,19 @@ storiesOf("DayListItem", module)
         message="Could not delete appointment."
         onClose={action("onClose")}
        /> ))
+       .add("Form editing", () => (
+        <Form
+          student="Andres"
+          interviewer={3}
+          interviewers={interviewers}
+          onSave={action("onSave")}
+          onCancel={action("onCancel")}
+        />
+      ))
+      .add("Form creating", () => (
+        <Form
+          interviewers={interviewers}
+          onSave={action("onSave")}
+          onCancel={action("onCancel")}
+        />
+      ))
