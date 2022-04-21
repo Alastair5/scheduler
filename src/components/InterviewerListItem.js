@@ -6,15 +6,15 @@ import "components/InterviewerListItem.scss";
 export default function InterviewerListItem({
   name,
   avatar,
-  setInterviewer,
   selected,
+  setInterviewer,
 }) {
   const selectedClass = classNames("interviewers__item", {
     "interviewers__item--selected": selected,
   });
   return (
    
-      <li onClick={setInterviewer} className={selectedClass}>
+      <li className={selectedClass} onClick={setInterviewer}>
         <img className="interviewers__item-image" src={avatar} alt={name} />
         {selected && name}
       </li>
