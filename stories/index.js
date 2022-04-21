@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from 'react'
 import DayListItem from "components/DayListItem"
 import DayList from "components/DayList"
 import InterviewerListItem from "components/InterviewerListItem"
@@ -151,7 +151,11 @@ storiesOf("DayListItem", module)
         .add("Header", () => <Header time="12pm"/>)
         .add("Empty", () => <Empty onAdd={action("onAdd")}/>)
         .add("Show", () => (
-          <Show onEdit={action("onEdit")} onDelete={action("onDelete")} />
+          <Show 
+          student={''}
+          interviewer={interviewer}
+          onEdit={action("onEdit")} 
+          onDelete={action("onDelete")} />
         ))
         .add("Confirm", () => (
           <Confirm onCancel={action("onCancel")} onConfirm={action("onConfirm")} />
@@ -177,3 +181,20 @@ storiesOf("DayListItem", module)
           onCancel={action("onCancel")}
         />
       ))
+      .add("Appointment Empty", () => (
+        <Fragment>
+          <Appointment id={1} time="4pm" />
+          <Appointment time="5pm" />
+        </Fragment>
+      ))
+      .add("Appointment Booked", () => (
+        <Fragment>
+          <Appointment
+            id={1}
+            time="4pm"
+            interview={{ student: "Lydia Miller-Jones", interviewer }}
+          />
+        </Fragment>
+      ))
+      
+      
