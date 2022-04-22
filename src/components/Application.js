@@ -45,8 +45,6 @@ const appointments = {
 };
 
 
-
-
 export default function Application() {
   const [days, setDays] = useState([]);
   const [day, setDay] = useState("");
