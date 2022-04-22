@@ -3,7 +3,7 @@ import Appointment from "components/Appointment";
 import "components/Application.scss";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {getAppointmentsForDay} from '../helpers/selectors';
+import {getAppointmentsForDay, getInterview} from '../helpers/selectors';
 
 
 
@@ -15,12 +15,13 @@ export default function Application() {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}
+    appointments: {},
+    interviewers: {}
   });
 
-  const dailyAppointments = getAppointmentsForDay(state, state.day)
   const setDay = (day => setState({ ...state, day }));
   
+  // console.log(state.interviewers);
 
   useEffect(() => {
     Promise.all([
@@ -37,21 +38,20 @@ export default function Application() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   // const setDays = (days) => setState(prev => ({ ...prev, days }));
-  //   const url = "/api/days";
-  //   axios.get(url)
-  //     .then((response) => {
-  //       setDays(response.data);
-  //       // setDay(days.name);
-  //     })
-  //     .catch((error) => error.message);
-  // }, []);
+ 
 
-
-  const appList = dailyAppointments.map((appointment) => 
-    (<Appointment key={appointment.id} {...appointment}/>))
-
+  const dailyAppointments = getAppointmentsForDay(state, state.day)
+  const appointments = dailyAppointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+      />
+    );
+  });
 
   return (
     
@@ -64,11 +64,6 @@ export default function Application() {
       />
      <hr className="sidebar__separator sidebar--centered" />
      <nav className="sidebar__menu">
-       {/* <DayList
-       days={days}
-       value={day}
-       onChange={setDay}
-       /> */}
        <DayList
     days={state.days}
     day={state.day}
@@ -82,7 +77,7 @@ export default function Application() {
      />
       </section>
       <section className="schedule">
-      {appList}
+      {appointments}
       <Appointment key='last' time="5pm" />
       </section>
     </main>
