@@ -18,6 +18,5 @@ export default function InterviewerListItem({
         <img className="interviewers__item-image" src={avatar} alt={name} />
         {selected && name}
       </li>
-   
   );
 }

@@ -27,7 +27,7 @@ const state = {
       time: "4pm",
       interview: { student: "Chad Takahashi", interviewer: 2 }
     }
-  }
+  },
   interviewers: {
     "1": {  
       "id": 1,

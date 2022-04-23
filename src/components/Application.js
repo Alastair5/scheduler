@@ -10,8 +10,6 @@ import {getAppointmentsForDay, getInterview} from '../helpers/selectors';
 
 
 export default function Application() {
-  // const [days, setDays] = useState([]);
-  // const [day, setDay] = useState("");
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -21,7 +19,6 @@ export default function Application() {
 
   const setDay = (day => setState({ ...state, day }));
   
-  // console.log(state.interviewers);
 
   useEffect(() => {
     Promise.all([
@@ -81,7 +78,5 @@ export default function Application() {
       <Appointment key='last' time="5pm" />
       </section>
     </main>
-    
   );
-
 }
