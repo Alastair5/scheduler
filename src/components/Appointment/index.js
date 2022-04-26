@@ -21,11 +21,20 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
+    // console.log(interview);
     transition(SAVING)
     props.bookInterview(props.id, interview)
-    .then((response) => {
+    .then(() => {
       transition(SHOW);
     });
+  }
+
+  function cancel(id) {
+    transition(SAVING);
+    props.cancelInterview(id)
+    .then(() => {
+      transition(EMPTY);
+    })
   }
   
 
@@ -36,6 +45,8 @@ return <article className="appointment">
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onDelete={cancel}
+          id={props.id}
         />
       )}
       {mode === SAVING && <Status />}
