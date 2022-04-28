@@ -2,8 +2,8 @@ import React from "react";
 import "components/DayListItem.scss";
 import classNames from "classnames";
 
+// Show remaining spots per day
 export default function DayListItem(props) {
-  // console.log(props);
   let dayClass = classNames('day-list__item', {
     'day-list__item--selected': props.selected,
     'day-list__item--full': props.spots === 0});

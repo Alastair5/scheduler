@@ -23,7 +23,6 @@ export default function useVisualMode(initial) {
   });
 
   const back = (() => {
-    console.log("History:", history);
     if (history.length === 1) {
       return;
     }

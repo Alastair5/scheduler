@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
-
+// Maniplation of the application
 export default function useApplicationData() {
-  
 
   const [state, setState] = useState({
     day: "Monday",
@@ -32,7 +31,6 @@ export default function useApplicationData() {
 
 
   function remainingSpots(newApp) {
-    console.log("newApp:", newApp);
     return state.days.map((day, index) => {
       let openSpots = 0;
       for (let id of state.days[index].appointments) {
@@ -41,13 +39,11 @@ export default function useApplicationData() {
         }
       } 
       const remainingSpots = {...day, spots: openSpots}
-      // console.log(remainingSpots);
       return remainingSpots;
     })
   }
 
   function bookInterview(id, interview) {
-    console.log(id, interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }

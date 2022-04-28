@@ -5,7 +5,7 @@ import React from "react";
 import {getAppointmentsForDay, getInterview, getInterviewersForDay} from '../helpers/selectors';
 import useApplicationData from 'hooks/useApplicationData';
 
-
+// Page layout
 export default function Application() {
 
   const { bookInterview, cancelInterview, state, setDay} = useApplicationData();

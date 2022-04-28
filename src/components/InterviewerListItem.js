@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import "components/InterviewerListItem.scss";
 
-
+// Each interviewer information
 export default function InterviewerListItem({
   name,
   avatar,

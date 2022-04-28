@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
-
+// Creating an interview form
 export default function Form(props) {
   const {interviewers, onSave, onCancel} = props;
   const [student, setStudent] = useState(props.student || "");
@@ -28,7 +28,6 @@ export default function Form(props) {
     onSave(student, interviewer);
   }
   
-console.log("Student:", student);
   return <main className="appointment__card appointment__card--create">
   <section className="appointment__card-left">
     <form autoComplete="off" onSubmit={event => event.preventDefault()}>
