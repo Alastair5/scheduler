@@ -28,7 +28,6 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    // console.log(interview);
     transition(SAVING, true)
     props.bookInterview(props.id, interview)
     .then(() => {
@@ -63,7 +62,7 @@ export default function Appointment(props) {
   }
   
 
-return <article className="appointment">
+return (<article className="appointment">
   <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE) } />}
       {mode === SHOW && (
@@ -115,6 +114,6 @@ return <article className="appointment">
           onClose={back}
         />
         )}
-    </article>;
-
+    </article>
+  );
 };
